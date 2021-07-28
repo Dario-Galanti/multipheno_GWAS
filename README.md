@@ -10,5 +10,5 @@ Wrapper script running [gwas_rr_kinship_multipheno.R](https://github.com/Dario-G
 [gwas_rr_kinship_multipheno.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gwas_rr_kinship_multipheno.R)<br/>
 Script for running multi-phenotype GWAS using mixed models with the R package ["rrBLUP"](https://cran.r-project.org/web/packages/rrBLUP/index.html). Transformation can be applied to phenotypes deviating heavily from normality and visually nice manhattan and qqplots are produced using the R package ["qqman"](https://cran.r-project.org/web/packages/qqman/index.html).
 
-[enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/enrichment_plot.sh)<br/>
+[enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/enrichment_plot.R)<br/>
 Script for visualization of the enrichment of a-priori candidates.
