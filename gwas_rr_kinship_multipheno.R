@@ -2,7 +2,7 @@
 ## Aim: R script to carry out multi-phenotype GWAS with the package rrBLUP, using mixed models
 ## kinship matrix is used to account for population structure. It can be provided as "kinship=K_matrix.kinship" or it will be calculated from the genotype file.
 ## Input geno: Plink .raw and .map files NB: Map file should have Chrom/Scaff as integers!!
-## Input pheno: phenotype file with headers: id <TAB> pop <TAB> phenotype_name
+## Input pheno: multi-phenotype txt file with headers: id <TAB> pop <TAB> phenotype1 <TAB> phenotype2 ... NAs are allowed
 ## Run: Rscript --vanilla gwas_rr_kinship_multipheno.R genotype_file=path_to_genotypes snp_map=path_to_map phenotype_file=path_to_phenotypes 
 ## Run: Rscript --vanilla gwas_rr_kinship_multipheno.R genotype_file=Ta_v2_gwas_ready.raw snp_map=Ta_v2_gwas_ready.map phenotype_file=pheno/grpix_samples_newnames.txt
 
@@ -16,7 +16,7 @@
 ## OPTION 2: "Gaussianise" function can be applied instead. Better option even though the resulting phenotype might still not be completely normal
 ## To activate the options, see the "TRANSFORMATION" part of the script, around line 130
 
-## OPTIONAL: You can define number of independent tests. If not define will be calculated = n° variants tested
+## OPTIONAL: You can define number of independent tests. If not define will be calculated = nÂ° variants tested
 ## This can be done by SNP pruning with Plink according to the study "Addressing population-specific multiple testing burdens in genetic association studies". 
 ## Independent tests = pruning (--indep-pairwise 100 5 0.3)
 tests <- 143346 # 4MAF. Pruning (--indep-pairwise 100 5 0.3)
