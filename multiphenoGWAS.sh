@@ -10,7 +10,7 @@
 
 ## Author: Dario Galanti (Jan 2021)
 ## Aim: Run GWAS on multiple phenotypes with "gwas_rr_kinship_multipheno.R" on BinAC cluster (PBS queuing system). Optionally also run enrichment of a-priori candidate variants
-## Input 1): multiple phenotypes txt file with headers. Columns are "id" "whatever" "phenotype1" "phenotype2" ... NB: ID names have to be the same as the kinship matrix
+## Input 1): multi-phenotypes txt file. Headers are "id" "whatever" "phenotype1" "phenotype2" ... NAs are allowed. NB: "id" names have to be the same as the kinship matrix
 ## Input 2): output directory name (individual phenotype directories will be created within this directory)
 ## Input 3) OPTIONAL: kinship: genetic similarity matrix (kinship or IBS). Sample IDs should correspond to phenotypes.txt. If not provided kinship matrix will be calculated
 ## Input 4) OPTIONAL: flanked_candidates: Bed file containing flanked (we used 20kb) regions of a-priori candidates
