@@ -46,7 +46,7 @@ do
  enrich_bed=$(dirname $f)/$(basename $f | cut -d"_" -f7-9)_enrichanalysis.bed
  enrichment=$(dirname $f)/$(dirname $f | rev | cut -d/ -f1 | rev)_enrichment_analysis.txt
  # Intersect results with flanked_candidates to assign candidate/no candidate status to each variant
- tail -n+2 $f | awk -F, 'OFS="\t"{split($1,loc,"_");if($1 ~ /^Scaffold/){print loc[1]"_"loc[2],($3-1),$3,$4}else{print loc[1],($3-1),$3,$4}}' | $bedtools intersect -a stdin -b $flanked_candidates -wa -c > $enrich_bed
+ tail -n+2 $f | awk -F, 'OFS="\t"{split($1,loc,":");print loc[1],($3-1),$3,$4}' | $bedtools intersect -a stdin -b $flanked_candidates -wa -c > $enrich_bed    #New variant names "Chr:pos"
  maxi=$(awk 'BEFORE{m=0} {if($4>m){m=$4}} END {print int(m*10)}' $enrich_bed)
  exp_freq=$(awk '{if($5>0){cand++}} END {print cand/NR}' $enrich_bed)
  echo -e -logP"\t"Cand_sig_vrts"\t"Sig_vrts"\t"Observed_freq"\t"Expected_freq"\t"Enrichment > $enrichment
@@ -69,7 +69,7 @@ do
  mkdir -p ${newdir}
  IGVfout=${newdir}/$(dirname $f | rev | cut -d"/" -f1 | rev)_IGVresults.gwas
  echo -e "CHR\tBP\tSNP\tP" > $IGVfout
- tail -n+2 $f | awk -F"," 'OFS="\t"{if($4>1){split($1,loc,"_");p=(10^(-$4));if($1 ~ /^Scaffold/){print loc[1]"_"loc[2],loc[3],$1,p}else{print loc[1],loc[2],$1,p}}}' >> $IGVfout
+ tail -n+2 $f | awk -F"," 'OFS="\t"{if($4>1){split($1,loc,":");p=(10^(-$4));print loc[1],loc[2],$1,p}}' >> $IGVfout     #New variant names "Chr:pos"
  plot1=$(dirname $f)/FDR_*manhattan_rrBLUP.png
  plot2=$(dirname $f)/FDR_*qqplot_rrBLUP.png
  plot3=$(dirname $f)/*enrich_FDR.pdf
