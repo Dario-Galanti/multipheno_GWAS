@@ -10,11 +10,11 @@ SCRIPTS DESCRIPTION: <br/>
 Prepare PLINK input files for GEMMA.
 
 [gemmaGWA_multipleno.sh](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/gemmaGWA_multipleno.sh)<br/>
-Script running in parallel for each phenotype (i) [GEMMA](https://github.com/genetics-statistics/GEMMA), (ii) manhattan and qqplot visualization, (iii) enrichment of a-priori candidates as in [Atwell et al. 2010](https://www.nature.com/articles/nature08800) and (iv) [enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/enrichment_plot.R) for visualization of the enrichment.
+Running in parallel for each phenotype (i) [GEMMA](https://github.com/genetics-statistics/GEMMA), (ii) manhattan and qqplot visualization, (iii) enrichment of a-priori candidates as in [Atwell et al. 2010](https://www.nature.com/articles/nature08800) and (iv) [enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/enrichment_plot.R) for visualization of the enrichment.
 
 [qqman_GEMMA.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/qqman_GEMMA.R)<br/>
-Script for making manhattan and qqplots from [GEMMA](https://github.com/genetics-statistics/GEMMA) results.
+Making manhattan and qqplots from [GEMMA](https://github.com/genetics-statistics/GEMMA) results.
 
 [enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/enrichment_plot.R)<br/>
-Script for plotting the enrichment of a-priori candidates.
+Plotting the enrichment of a-priori candidates.
 
