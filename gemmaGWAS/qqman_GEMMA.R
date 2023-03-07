@@ -1,8 +1,8 @@
 ## Author: Dario Galanti
-## INPUT: gwas output from rrblup
+## Aim: Make manhattan and qqplot from GEMMA output file
+## INPUT: gwas output from GEMMA
+## RUN: Rscript --vanilla qqman_GEMMA.R gemma_output/phenotype.assoc.txt
 ## RUN: Rscript --vanilla qqman_GEMMA.R SupFamTIPs_log_1out_RIR/SupFamTIPs_log_1out_RIR.assoc.txt
-## RUN RECURSIVELY: for f in /beegfs/work/bbmdg01/GWAS/meth_genctxt_nooutliers/*/Ta_v3_vrts_4MAF*.results;do cd $(dirname $f); Rscript --vanilla /beegfs/work/bbmdg01/GWAS/qqman.R $f;done
-
 
 library(qqman)
 library(fastman)  # For plot with larger lables
@@ -11,10 +11,6 @@ library(data.table)
 ## IMPORTANT: Define number of independent tests. This is done by SNP pruning with Plink according to the study
 ## "Addressing population-specific multiple testing burdens in genetic association studies"
 ## Independent tests = Variants passing 0.1NAs, 0.05MAF, biallelic, pruning (--indep-pairwise 100 5 0.4)
-#tests <- 104790 # Comment out to calculate n? tests = total number of SNPs
-#tests <- 143346 # 4MAF. Pruning (--indep-pairwise 100 5 0.3) v3
-#tests <- 142943 # 4MAF. Pruning (--indep-pairwise 100 5 0.3) v3v5 lifted
-#tests <- 141552 # 4MAF. Pruning (--indep-pairwise 100 5 0.3) v4v5 lifted
 #tests <- 148404 # 4MAF. Pruning (--indep-pairwise 100 5 0.3) v4v5 lifted withUSspls (withref)
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -59,15 +55,6 @@ top.pal <- c("darkorange2", "orangered2")
 #top.pal <- c("#7cb952", "#5ca282")   # greens
 #top.pal <- c("royalblue2", "blue")   # blues
 
-## ORIGINAL
-## "cex" regulates dot size; "cex.axes" axes numbers; "cex.lab" axes lables
-#png(paste(outdir,"/FDR_0.2_",file,"_manhattan_GEMMA.png",sep=""), width = 1400, height = 600)
-#par(mar = c(5, 5.2, 4, 2) + 0.1) # Add space for the y axes label. c(bottom, left, top, right) margins with default c(5,4,4,2)+0.1
-#manhattan(Results, cex=1.6, cex.axis=1.7, cex.lab=2, col = man.pal, main=file,
-#          genomewideline = Bonferroni,
-#          #suggestiveline = FDRtr,
-#          ylim = c(0, ceiling(ytop)))
-#dev.off()
 
 # Remove very high pvalues for nicer plotting
 Results <- Results[Results$P<0.85,]
@@ -84,20 +71,10 @@ fastman(Results, cex=1.6, cex.axis=2.1, cex.lab=2.1, main=file, maxP=NULL,
           ylim = c(0, ceiling(ytop)))
 dev.off()
 
-## MAKING MANHATTAN IN TIF
-#tiff(paste(outdir,"/FDR_0.1_",file,"_manhattan_rrBLUP.tiff",sep=""), units="in", width=9.8, height=5, res=300)
-#manhattan(Results, cex=0.6, cex.axis=0.9, cex.lab=1, col = man.pal,
-#          suggestiveline = FDRtr, genomewideline = Bonferroni, 
-#          ylim = c(0, ceiling(ytop)))
-#dev.off()
-
-# If willing to highlight some of the markers
-#manhattan(Results, chr = "CHR", bp = "BP", p = "P",cex = 0.8, cex.axis = 0.8, +
-#            genomewideline = Bonferroni, highlight="Vector_containing_markerIDs")
-
+## QQPLOT
 png(paste(outdir,"/",file,"_qqplot_GEMMA.png",sep=""), width = 500, height = 500)
 par(mar = c(5, 5.2, 4, 2) + 0.1) # Add space for the y axes lable
-qq(Results$P, cex = 1.2, cex.axis = 1.7, cex.lab=1.8, col="darkblue")
+qq(Results$P, cex = 1.4, cex.axis = 1.7, cex.lab=1.8, col="darkblue")
 dev.off()
 
 print("#########")
