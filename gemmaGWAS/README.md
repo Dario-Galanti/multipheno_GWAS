@@ -4,7 +4,6 @@ Additional functionality includes pleasant visualization, optional phenotype tra
 
 
 SCRIPTS DESCRIPTION: <br/>
-<br/>
 
 [gemma_input.sh](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/gemma_input.sh)<br/>
 Prepare PLINK input files for GEMMA.
