@@ -48,11 +48,8 @@ print(paste("FDR 0.20 treshold for",SNPs,"SNPs:",FDRtr))
 
 ##MAKING MANHATTAN
 ytop <- max(Bonferroni, topval)
-#man.pal <- c("darkblue","darkcyan") # NEW
-#man.pal <- c("grey40","grey15") # grey
 man.pal <- c("grey50","grey20") # grey
 top.pal <- c("darkorange2", "orangered2")
-#top.pal <- c("#7cb952", "#5ca282")   # greens
 #top.pal <- c("royalblue2", "blue")   # blues
 
 
