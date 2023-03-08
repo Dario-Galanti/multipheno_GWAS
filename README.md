@@ -19,3 +19,6 @@ Script for running multi-phenotype GWAS using mixed models with the R package ["
 
 [enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/enrichment_plot.R)<br/>
 Script for plotting the enrichment of a-priori candidates.
+
+PUBLICATIONS: <br/>
+[Genetic and environmental drivers of large-scale epigenetic variation in Thlaspi arvense](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1010452)
