@@ -1,5 +1,5 @@
 # multipheno_GWAS
-Scripts for running multi-phenotype GWAS using mixed models with the R package "rrBLUP".<br/>
+Scripts for running multi-phenotype GWAS using either mixed models with the R package "rrBLUP", or alternatively GEMMA in [gemmaGWAS](https://github.com/Dario-Galanti/multipheno_GWAS/tree/main/gemmaGWAS).<br/>
 Additional functionality includes pleasant visualization, optional phenotype transformations and enrichment of variants neighbouring a-priori candidate genes.
 
 
