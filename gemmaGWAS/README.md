@@ -15,5 +15,8 @@ Running in parallel for each phenotype (i) [GEMMA](https://github.com/genetics-s
 Making manhattan and qqplots from [GEMMA](https://github.com/genetics-statistics/GEMMA) results.
 
 [enrichment_plot.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/enrichment_plot.R)<br/>
-Plotting the enrichment of a-priori candidates.
+Plotting the enrichment of a-priori candidates for increasing -log(p) thresholds.
+
+[enrich_sig_genome_rotation.R](https://github.com/Dario-Galanti/multipheno_GWAS/blob/main/gemmaGWAS/enrich_sig_genome_rotation.R)<br/>
+Calculating significance of the enrichment of variants closeby a priori candidate genes for a single -log(p) threshold (usually bonferroni). It implements a genome rotation scheme described at the beginning of the script or for example by [Brachi et al. 2010](https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000940).
 
