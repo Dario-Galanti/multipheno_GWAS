@@ -26,7 +26,7 @@ logs <- args[5]
 ## 1) Split data frame by scaffold
 X <- split(df, df$V1)
 
-## OPTIONAL: REMOVE SCAFFOLDS - Should be done before
+## OPTIONAL: REMOVE SCAFFOLDS WITH <3 VARIANTS
 scaff_keep <- lapply(X, function(df) nrow(df) >= 3) # Logical vector of scaffolds to keep
 X <- X[unlist(scaff_keep)]    # Subset the list
 df <- dplyr::bind_rows(X)
@@ -40,14 +40,14 @@ enrichment <- observed_freq/exp_freq
 
 
 ## FUNCTION TO ROTATE THE PVALUES AND A-PRIORI CANDIDATE STATUS OF EACH CHROMOSOME
-# Function to rotate the vector
+# Function to rotate the vector by a random number
 rotate_vector <- function(vec) {
   n <- length(vec)   # Get the length of the vector
   rand <- sample(0:(n-1), 1)
   if (rand == 0) return(vec)
   c(vec[(n - rand + 1):n], vec[1:(n - rand)])
 }
-# Rotate the vector by the random shift
+# Test the rotate_vector function
 #vec <- 1:10
 #rotated_vec <- rotate_vector(vec)
 
@@ -60,7 +60,7 @@ cl <- makeCluster(cores)
 registerDoParallel(cl) #register the parallel backend with the foreach package
 
 ## PRINT INFO TO OUTPUT FILE
-## Allows to check if things are correct before the script is finished
+## Checking if things are correct before the script is finished
 cat(paste("using", cores, "cpus", sep=" "), sep="\n", file=fout)
 cat(paste("running",iterations,"iterations", sep=" "), sep="\n", file=fout, append=T)
 cat(paste("input file:", fin, sep=" "), sep="\n", file=fout, append=T)
@@ -100,7 +100,7 @@ pvalue <- mean(null_distr >= enrichment)
 cat(paste("Enrichment pvalue:", pvalue, sep=" "), sep = "\n", file=fout, append=T)
 
 ### IF WILLING TO PRINT NULL DISTRIBUTION
-fwrite(as.data.frame(null_distr), "enrich_null_dist.txt", sep="\t",row.names=FALSE, col.names=FALSE, quote=FALSE)
+#fwrite(as.data.frame(null_distr), "enrich_null_dist.txt", sep="\t",row.names=FALSE, col.names=FALSE, quote=FALSE)
 
 
 
